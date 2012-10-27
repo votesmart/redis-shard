@@ -22,7 +22,7 @@ class RedisShardAPI(object):
             self.pool = None
         if isinstance(servers, list):
             for server in servers:
-                conn = redis.Redis(
+                conn = redis.StrictRedis(
                     host=server['host'], port=server[
                         'port'], db=server['db'], connection_pool=self.pool,
                     password=server.get('password'), socket_timeout=server.get('socket_timeout'))
