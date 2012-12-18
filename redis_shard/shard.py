@@ -46,10 +46,10 @@ class RedisShardAPI(object):
                                unix_socket_path=server.get('unix_socket_path'),
                                )
             server['name'] = name
-                if name in self.connections:
-                    raise ValueError("server's name config must be unique")
-                self.connections[name] = conn
-                self.nodes.append(name)
+            if name in self.connections:
+                raise ValueError("server's name config must be unique")
+            self.connections[name] = conn
+            self.nodes.append(name)
         self.ring = HashRing(self.nodes)
 
     def get_server_name(self, key):
